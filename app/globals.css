@@ -1,0 +1,52 @@
+/* Developed by www.Jamiulalamrejon.com (https://www.Jamiulalamrejon.com) */
+/* Theme: clean, soft-shadow cards with a bright blue accent. */
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #e8f1ff;
+  --color-brand-100: #c8ddff;
+  --color-brand-400: #4c8dff;
+  --color-brand-500: #2f74ff;
+  --color-brand-600: #1660f5;
+  --color-brand-700: #0b4cd1;
+  --color-ink: #141a2e;
+  --color-page: #f4f6fb;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --shadow-soft: 0 10px 30px -12px rgba(20, 26, 46, 0.12), 0 2px 6px -2px rgba(20, 26, 46, 0.05);
+  --shadow-tile: 0 6px 14px -6px rgba(22, 96, 245, 0.55);
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { @apply bg-page text-slate-700 antialiased; -webkit-tap-highlight-color: transparent; }
+h1, h2, h3 { @apply text-ink; }
+
+@utility input {
+  @apply h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-base text-ink outline-none transition sm:h-10 sm:text-sm
+         placeholder:text-slate-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-50;
+}
+@utility label { @apply mb-1.5 block text-xs font-medium text-slate-500; }
+@utility card { @apply min-w-0 rounded-2xl bg-white shadow-soft; }
+@utility tile { @apply grid size-10 shrink-0 place-items-center rounded-xl bg-brand-600 text-white shadow-tile; }
+@utility btn { @apply inline-flex h-10 items-center sm:h-9 justify-center gap-2 rounded-lg px-4 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-60; }
+@utility btn-primary { @apply btn bg-brand-600 text-white shadow-tile hover:bg-brand-700; }
+@utility btn-secondary { @apply btn border border-slate-200 bg-white text-slate-700 hover:border-brand-400 hover:text-brand-600; }
+@utility btn-ghost { @apply btn text-slate-500 hover:bg-slate-100 hover:text-ink; }
+@utility btn-danger { @apply btn bg-red-500 text-white hover:bg-red-600; }
+@utility table-th { @apply px-5 py-3 text-left text-[11px] font-semibold tracking-wider whitespace-nowrap text-slate-400 uppercase; }
+@utility table-td { @apply px-5 py-3.5 text-sm whitespace-nowrap text-slate-700; }
+
+textarea.input { @apply h-auto py-2; }
+
+/* Wide charts scroll sideways on phones instead of shrinking their labels */
+@utility chart-scroll { @apply -mx-1 overflow-x-auto px-1 pb-1 [scrollbar-width:none]; }
+.chart-scroll > * { min-width: 520px; }
+@media (min-width: 640px) { .chart-scroll > * { min-width: 0; } }
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Print only the invoice when an invoice is open */
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; inset: 0; padding: 32px; }
+  .no-print { display: none !important; }
+}

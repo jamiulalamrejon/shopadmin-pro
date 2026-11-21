@@ -1,0 +1,9 @@
+# Developed by www.Jamiulalamrejon.com
+node_modules
+.next
+out
+.env
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
